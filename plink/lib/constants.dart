@@ -11,7 +11,7 @@ const kPrimaryGradientColor = LinearGradient(
 );
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
-
+const kToastBgColor = Color(0xFF737373);
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
@@ -31,6 +31,8 @@ const String kEmailNullError = "Please Enter your email";
 const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter your password";
 const String kShortPassError = "Password is too short";
+const String kUserNotFound = "User not found. \nPlease Enter your email!";
+const String kWrongPassword = "Password is wrong. \nPlease Enter your password!";
 const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";

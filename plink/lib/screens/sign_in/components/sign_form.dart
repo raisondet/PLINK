@@ -7,6 +7,8 @@ import 'package:plink/size_config.dart';
 import 'package:plink/helper/keyboard.dart';
 import 'package:plink/screens/forgot_password/forgot_password_screen.dart';
 import 'package:plink/screens/login_success/login_success_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  
+
   String? email;
   String? password;
   bool? remember = false;
@@ -33,6 +35,17 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.remove(error);
       });
+  }
+
+  void toast(String _msg){
+    Fluttertoast.showToast(
+      msg: _msg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      backgroundColor: kToastBgColor,
+      textColor: Colors.white,
+      fontSize: 16.0
+    );
   }
 
   @override
@@ -72,12 +85,27 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                // if all are valid then go to success screen
+                try{
+                  final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  if (user != null){
+                    print('Login Success!!');
+                    Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  }
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'user-not-found') {
+                    print('No user found for that email.');
+                    toast(kUserNotFound);
+                  } else if (e.code == 'wrong-password') {
+                    print('Wrong password provided for that user.');
+                    toast(kWrongPassword);
+                  }
+                }
               }
             },
           ),
