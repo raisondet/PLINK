@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "427464899946",
+    "project_id": "plinklogin-c0a75",
+    "storage_bucket": "plinklogin-c0a75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427464899946:android:e52dfd5887c4f18beb7913",
+        "android_client_info": {
+          "package_name": "com.a7hills.plink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427464899946-jkorcbdf1nhnmkku3ae6h128k543m563.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.a7hills.plink",
+            "certificate_hash": "97c95840d875152d59c09c02f09bf68433f3969d"
+          }
+        },
+        {
+          "client_id": "427464899946-lfbo3s35r367ah3qbr5tt3puisr5ga2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhGAY_EXXhA3DpiOEVVNKrJouTsElSXwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427464899946-lfbo3s35r367ah3qbr5tt3puisr5ga2i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "427464899946-bhtb0saaelrd3f1bdf7pbqhmhttdn2ar.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.a7hills.plink"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
