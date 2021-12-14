@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:plink/constants.dart';
+import 'package:plink/components/default_button.dart';
 import 'package:plink/screens/sign_in/sign_in_screen.dart';
 import 'package:plink/size_config.dart';
-
-// This is the best practice
-import '../components/splash_content.dart';
-import '../../../components/default_button.dart';
+import 'splash_content.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -67,7 +65,7 @@ class _BodyState extends State<Body> {
                             (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 3),
+                    Spacer(flex:2),
                     DefaultButton(
                       text: "Continue",
                       press: () {
