@@ -95,16 +95,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       height: 160,
       width: 160,
       child: Stack(
-        fit: StackFit.expand,
-        clipBehavior: Clip.none,
+        /*fit: StackFit.expand,
+        clipBehavior: Clip.none,*/
         children: [
-          CircleAvatar(
-            //radius: 16.0,
-            child: ClipOval(
-              child: _imageFile == null
-                  ? Text('no image')
-                  : Image.file(File(_imageFile!.path)),
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100.0),
+            child: _imageFile == null
+                ? Image.asset(imgDefaultPath, fit: BoxFit.fill)
+                : Image.file(
+                    File(_imageFile!.path),
+                    height: 160,
+                    width: 160,
+                    fit: BoxFit.fill,
+                  ),
           ),
           Positioned(
             right: 5,
@@ -289,7 +292,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-        CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
@@ -321,5 +324,4 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       ),
     );
   }
-
 }

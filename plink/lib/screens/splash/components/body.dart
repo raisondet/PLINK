@@ -3,6 +3,7 @@ import 'package:plink/constants.dart';
 import 'package:plink/components/default_button.dart';
 import 'package:plink/screens/home/home_screen.dart';
 import 'package:plink/screens/sign_in/sign_in_screen.dart';
+import 'package:plink/screens/complete_profile/complete_profile_screen.dart';
 import 'package:plink/size_config.dart';
 import 'splash_content.dart';
 
@@ -72,7 +73,8 @@ class _BodyState extends State<Body> {
                       text: "Continue",
                       press: () {
                         //Navigator.pushNamed(context, SignInScreen.routeName);
-                        Navigator.pushNamed(context, HomeScreen.routeName);
+                        Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                        //Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
                     Spacer(),
