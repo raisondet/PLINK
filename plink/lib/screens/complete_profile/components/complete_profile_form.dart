@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plink/components/custom_surfix_icon.dart';
 import 'package:plink/components/default_button.dart';
 import 'package:plink/components/form_error.dart';
@@ -22,9 +22,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? phoneNumber;
   String? address;
 
-  final ImagePicker picker = ImagePicker();
-  String imgPath = "assets/images/default_profile.png";
-  File? profileImg;
+  String imgDefaultPath = "assets/images/default_profile.png";
+  File? _imageFile;
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -40,11 +39,16 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       });
   }
 
-  void getImage() async {
-    PickedFile? image = await picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      profileImg = File(image.path);
-    });
+  Future<void> getImageFromGallery() async {
+    try {
+      final imageFile =
+          await ImagePicker.pickImage(source: ImageSource.gallery);
+      setState(() {
+        _imageFile = imageFile;
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -81,7 +85,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     //final image = NetworkImage(
     //    'https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png');
 
-    final defaultImg = AssetImage(imgPath);
+    final defaultImg = AssetImage(imgDefaultPath);
     return SizedBox(
       height: 160,
       width: 160,
@@ -90,7 +94,12 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         clipBehavior: Clip.none,
         children: [
           CircleAvatar(
-            backgroundImage: defaultImg,
+            radius: 16.0,
+            child: ClipRRect(
+              child: _imageFile == null
+                  ? Text('no image')
+                  : Image.file(File(_imageFile!.path)),
+            ),
           ),
           Positioned(
             right: 5,
@@ -107,7 +116,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                   primary: Colors.white,
                   backgroundColor: kPrimaryColor,
                 ),
-                onPressed: () {},
+                onPressed: getImageFromGallery,
                 child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
               ),
             ),
