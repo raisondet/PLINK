@@ -10,6 +10,7 @@ import 'package:plink/screens/otp/otp_screen.dart';
 import 'package:plink/constants.dart';
 import 'package:plink/size_config.dart';
 import 'package:smart_select/smart_select.dart';
+import 'package:plink/choices.dart' as choices;
 
 class CompleteProfileForm extends StatefulWidget {
   @override
@@ -64,12 +65,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           buildNickNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildDateOfBirthFormField(),
-          /*
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildPhoneNumberFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildAddressFormField(),
-          */
           SizedBox(height: getProportionateScreenHeight(30)),
           buildGenderSelect(),
           const Divider(indent: 20),
@@ -138,16 +133,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   Widget buildGenderSelect() {
     String value = 'flutter';
-    List<S2Choice<String>> options = [
-      S2Choice<String>(value: 'm', title: 'male'),
-      S2Choice<String>(value: 'f', title: 'female'),
-      S2Choice<String>(value: 'o', title: 'others'),
-    ];
-
     return SmartSelect<String>.single(
       title: 'Gender',
       value: value,
-      choiceItems: options,
+      choiceItems: choices.genders,
       modalType: S2ModalType.bottomSheet,
       onChange: (state) => setState(() => value = state.value),
       tileBuilder: (context, state) => S2Tile.fromState(
@@ -163,74 +152,16 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   }
 
   Widget buildInterestSelect() {
-    List<String> _smartphone = [];
+    List<String> _interests = [];
     String value = 'flutter';
-
-    List<Map<String, dynamic>> smartphones = [
-      {
-        'id': 'sk3',
-        'name': 'Samsung Keystone 3',
-        'brand': 'Samsung',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'n106',
-        'name': 'Nokia 106',
-        'brand': 'Nokia',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'n150',
-        'name': 'Nokia 150',
-        'brand': 'Nokia',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'r7a',
-        'name': 'Redmi 7A',
-        'brand': 'Xiaomi',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'ga10s',
-        'name': 'Galaxy A10s',
-        'brand': 'Samsung',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'rn7',
-        'name': 'Redmi Note 7',
-        'brand': 'Xiaomi',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'ga20s',
-        'name': 'Galaxy A20s',
-        'brand': 'Samsung',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'mc9',
-        'name': 'Meizu C9',
-        'brand': 'Meizu',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'm6',
-        'name': 'Meizu M6',
-        'brand': 'Meizu',
-        'category': 'Mid End Phone'
-      },
-    ];
-
     return SmartSelect<String>.multiple(
       title: 'Interests',
       onChange: (selected) {
-        setState(() => _smartphone = selected.value);
+        setState(() => _interests = selected.value);
       },
       choiceType: S2ChoiceType.chips,
       choiceItems: S2Choice.listFrom<String, Map>(
-        source: smartphones,
+        source: choices.interests,
         value: (index, item) => item['id'],
         title: (index, item) => item['name'],
       ),
@@ -250,76 +181,16 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     );
   }
 
-
   Widget buildAboutMe() {
-    List<String> _smartphone = [];
-    String value = 'flutter';
-
-    List<Map<String, dynamic>> smartphones = [
-      {
-        'id': 'sk3',
-        'name': 'Samsung Keystone 3',
-        'brand': 'Samsung',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'n106',
-        'name': 'Nokia 106',
-        'brand': 'Nokia',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'n150',
-        'name': 'Nokia 150',
-        'brand': 'Nokia',
-        'category': 'Budget Phone'
-      },
-      {
-        'id': 'r7a',
-        'name': 'Redmi 7A',
-        'brand': 'Xiaomi',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'ga10s',
-        'name': 'Galaxy A10s',
-        'brand': 'Samsung',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'rn7',
-        'name': 'Redmi Note 7',
-        'brand': 'Xiaomi',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'ga20s',
-        'name': 'Galaxy A20s',
-        'brand': 'Samsung',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'mc9',
-        'name': 'Meizu C9',
-        'brand': 'Meizu',
-        'category': 'Mid End Phone'
-      },
-      {
-        'id': 'm6',
-        'name': 'Meizu M6',
-        'brand': 'Meizu',
-        'category': 'Mid End Phone'
-      },
-    ];
-
+    List<String> _features = [];
     return SmartSelect<String>.multiple(
       title: 'About Me',
       onChange: (selected) {
-        setState(() => _smartphone = selected.value);
+        setState(() => _features = selected.value);
       },
       choiceType: S2ChoiceType.chips,
       choiceItems: S2Choice.listFrom<String, Map>(
-        source: smartphones,
+        source: choices.features,
         value: (index, item) => item['id'],
         title: (index, item) => item['name'],
       ),
@@ -347,63 +218,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           ),
         );
       },*/
-    );
-  }
-
-
-  TextFormField buildAddressFormField() {
-    return TextFormField(
-      onSaved: (newValue) => address = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kAddressNullError);
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kAddressNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Address",
-        hintText: "Enter your phone address",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon:
-            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
-      ),
-    );
-  }
-
-  TextFormField buildPhoneNumberFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.phone,
-      onSaved: (newValue) => phoneNumber = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kPhoneNumberNullError);
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kPhoneNumberNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Phone Number",
-        hintText: "Enter your phone number",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
-      ),
     );
   }
 
@@ -451,4 +265,61 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       ),
     );
   }
+
+  TextFormField buildAddressFormField() {
+    return TextFormField(
+      onSaved: (newValue) => address = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kAddressNullError);
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kAddressNullError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Address",
+        hintText: "Enter your address",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon:
+        CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+      ),
+    );
+  }
+
+  TextFormField buildPhoneNumberFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.phone,
+      onSaved: (newValue) => phoneNumber = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPhoneNumberNullError);
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPhoneNumberNullError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Phone Number",
+        hintText: "Enter your phone number",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+      ),
+    );
+  }
+
 }
