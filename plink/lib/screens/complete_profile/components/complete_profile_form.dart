@@ -1,11 +1,13 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plink/components/custom_surfix_icon.dart';
 import 'package:plink/components/default_button.dart';
 import 'package:plink/components/form_error.dart';
 import 'package:plink/screens/otp/otp_screen.dart';
-
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import 'package:plink/constants.dart';
+import 'package:plink/size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   @override
@@ -19,6 +21,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? lastName;
   String? phoneNumber;
   String? address;
+
+  final ImagePicker picker = ImagePicker();
+  String imgPath = "assets/images/default_profile.png";
+  File? profileImg;
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -34,12 +40,21 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       });
   }
 
+  void getImage() async {
+    PickedFile? image = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      profileImg = File(image.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          buildProfilePic(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildFirstNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildLastNameFormField(),
@@ -57,6 +72,46 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               }
             },
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildProfilePic() {
+    //final image = NetworkImage(
+    //    'https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png');
+
+    final defaultImg = AssetImage(imgPath);
+    return SizedBox(
+      height: 160,
+      width: 160,
+      child: Stack(
+        fit: StackFit.expand,
+        clipBehavior: Clip.none,
+        children: [
+          CircleAvatar(
+            backgroundImage: defaultImg,
+          ),
+          Positioned(
+            right: 5,
+            bottom: 5,
+            child: SizedBox(
+              height: 46,
+              width: 46,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    side: BorderSide(color: Colors.white),
+                  ),
+                  primary: Colors.white,
+                  backgroundColor: kPrimaryColor,
+                ),
+                onPressed: () {},
+                child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -85,7 +140,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-        CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
