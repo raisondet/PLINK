@@ -11,6 +11,7 @@ import 'googlemap.dart';
 import 'popular_product.dart';
 import 'special_offers.dart';*/
 
+/*
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,30 +20,30 @@ class Body extends StatelessWidget {
     );
   }
 }
-
-/*
+*/
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: getProportionateScreenHeight(20)),
-            HomeHeader(),
-            SizedBox(height: getProportionateScreenWidth(10)),
-            GoogleMapWidget(),
-            //DiscountBanner(),
-            Categories(),
-            /*SpecialOffers(),
-            SizedBox(height: getProportionateScreenWidth(30)),
-            PopularProducts(),
-            SizedBox(height: getProportionateScreenWidth(30)),*/
-          ],
-        ),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            child: GoogleMapWidget(),
+            width: double.infinity,
+            height: getProportionateScreenHeight(700),
+            // TODO : CHECK Full height
+          ),
+          Positioned(child: HomeHeader(), left: 0, top: getProportionateScreenHeight(15)),
+          //DiscountBanner(),
+          //Categories(),
+          /*SpecialOffers(),
+          SizedBox(height: getProportionateScreenWidth(30)),
+          PopularProducts(),
+          SizedBox(height: getProportionateScreenWidth(30)),
+          */
+        ],
       ),
     );
   }
 }
- */
