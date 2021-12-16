@@ -44,6 +44,11 @@ dependencies:
   geolocator: ^6.0.0
   google_maps_flutter: ^0.5.28+1
 
+  sliding_up_panel: ^1.0.2
+  flutter_map: ^0.8.2
+  latlong: ^0.6.1
+  cached_network_image: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
