@@ -11,32 +11,56 @@ class GoogleMapWidget extends StatefulWidget {
 
 class GoogleMapState extends State<GoogleMapWidget> {
   Completer<GoogleMapController> _controller = Completer();
+  Position? position;
 
-  Future<Position> getLocation() async {
-    Position position =
-    await getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
-    return position;
+  void getLocation() async {
+    Position pos =
+        await getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+    setState(() {
+      position = pos;
+      print(position);
+      // TODO : CHECK Current location
+    });
+  }
+
+  void _setStyle(GoogleMapController controller) async {
+    String value = await DefaultAssetBundle.of(context)
+        .loadString('assets/style/map_style.json');
+    controller.setMapStyle(value);
+  }
+  Set<Marker> _createMarker(){
+    return <Marker>[
+      Marker(
+          markerId: MarkerId('home'),
+          position: position == null
+              ? LatLng(37.2785209,127.0735166)
+              : LatLng(position?.latitude, position?.longitude),
+          icon: BitmapDescriptor.defaultMarker,
+          infoWindow: InfoWindow(title: 'Current Location')
+      )
+    ].toSet();
   }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 17.4746,
+    target: LatLng(37.2785209,127.0735166),
+    zoom: 16.4,
   );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
+        mapType: MapType.normal,
+        markers: _createMarker(),
+        initialCameraPosition: CameraPosition(
+          target: position == null
+              ? LatLng(37.2785209,127.0735166)
+              : LatLng(position?.latitude, position?.longitude),
+          zoom: 16.4,
+        ),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
+          _setStyle(controller);
         },
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
@@ -48,6 +72,12 @@ class GoogleMapState extends State<GoogleMapWidget> {
       ),*/
     );
   }
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
 
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
