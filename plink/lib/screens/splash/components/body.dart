@@ -73,8 +73,8 @@ class _BodyState extends State<Body> {
                       text: "Continue",
                       press: () {
                         //Navigator.pushNamed(context, SignInScreen.routeName);
-                        Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                        //Navigator.pushNamed(context, HomeScreen.routeName);
+                        //Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
                     Spacer(),
