@@ -58,8 +58,8 @@ class FeaturePlantCard extends StatelessWidget {
           top: kDefaultPadding / 2,
           bottom: kDefaultPadding / 2,
         ),
-        width: size.width * 0.8,
-        height: 185,
+        width: size.width * 0.6,
+        height: 145,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
