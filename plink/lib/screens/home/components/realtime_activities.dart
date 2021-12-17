@@ -6,73 +6,82 @@ import 'package:plink/size_config.dart';
 import 'package:plink/constants.dart';
 
 class RealtimeActivities extends StatelessWidget {
-  const RealtimeActivities({
+  /*const RealtimeActivities({
     required Key? key,
-  }) : super(key: key);
+  }) : super(key: key);*/
+
+  List<Map<String, dynamic>> realtimeActivities = [
+    {
+      "image": "assets/images/image_1.png",
+      "title": "2:2 Golf",
+      "category": "Smartphone",
+      "country": "gangnam",
+      "price": 18
+    },
+    {
+      "image": "assets/images/image_2.png",
+      "title": "Play Tennis",
+      "category": "Smartphone",
+      "country": "seocho",
+      "price": 18
+    },
+    {
+      "image": "assets/images/image_3.png",
+      "title": "with brunch",
+      "category": "Smartphone",
+      "country": "yanggae",
+      "price": 18
+    },
+    {
+      "image": "assets/images/image_1.png",
+      "title": "go running!!",
+      "category": "Smartphone",
+      "country": "",
+      "price": 18
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-            title: "Activities",
-            press: () {},
-          ),
+    return Column(children: [
+      Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+        child: SectionTitle(
+          title: "Activities",
+          press: () {},
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: <Widget>[
-              RecomendPlantCard(
-                image: "assets/images/image_1.png",
-                title: "Samantha",
-                country: "Russia",
-                price: 440,
-                press: () {
-                  /*Navigator.push(
+      ),
+      SizedBox(height: getProportionateScreenWidth(20)),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(
+            realtimeActivities.length,
+            (index) => ActivityCard(
+              image: realtimeActivities[index]["image"],
+              title: realtimeActivities[index]["title"],
+              country: realtimeActivities[index]["country"],
+              price: realtimeActivities[index]["price"],
+              press: () {
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => DetailsScreen(),
                   ),
                 );*/
-                }, key: null,
-              ),
-              RecomendPlantCard(
-                image: "assets/images/image_2.png",
-                title: "Angelica",
-                country: "Russia",
-                price: 440,
-                press: () {
-                  /*Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsScreen(),
-                  ),
-                );*/
-                }, key: null,
-              ),
-              RecomendPlantCard(
-                image: "assets/images/image_3.png",
-                title: "Samantha",
-                country: "Russia",
-                price: 440,
-                press: () {},
-                key: null,
-              ),
-            ],
+              },
+              key: null,
+            ),
           ),
         ),
-      ]
-    );
+      ),
+    ]);
   }
 }
 
-class RecomendPlantCard extends StatelessWidget {
-  const RecomendPlantCard({
+class ActivityCard extends StatelessWidget {
+  const ActivityCard({
     required Key? key,
     required this.image,
     required this.title,
@@ -119,11 +128,17 @@ class RecomendPlantCard extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   RichText(
+                    overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: "$title\n".toUpperCase(),
-                            style: Theme.of(context).textTheme.button),
+                          text: "$title\n".toUpperCase(),
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        //style: Theme.of(context).textTheme.button),
                         TextSpan(
                           text: "$country".toUpperCase(),
                           style: TextStyle(

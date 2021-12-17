@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: getProportionateScreenHeight(10),),
             SpecialOffers(),
             SizedBox(height: getProportionateScreenHeight(30),),
-            RealtimeActivities(key: null),
+            RealtimeActivities(),
             //SizedBox(height: getProportionateScreenHeight(10),),
             RecommendActivities(),
           ],

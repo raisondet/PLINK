@@ -4,17 +4,35 @@ import 'package:plink/size_config.dart';
 import 'package:plink/screens/home/components/section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
-  const SpecialOffers({
+  List<Map<String, dynamic>> specials = [
+    {
+      "image": "assets/images/Image Banner 2.png",
+      "category": "Smartphone",
+      "numOfBrands": 18
+    },
+    {
+      "image": "assets/images/Image Banner 3.png",
+      "category": "Fashion",
+      "numOfBrands": 24
+    },
+    {
+      "image": "assets/images/Image Banner 2.png",
+      "category": "Smartphone",
+      "numOfBrands": 18
+    },
+  ];
+
+  /* const SpecialOffers({
     Key? key,
   }) : super(key: key);
-
+*/
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SectionTitle(
             title: "Special for you",
             press: () {},
@@ -24,21 +42,15 @@ class SpecialOffers extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SpecialOfferCard(
-                image: "assets/images/Image Banner 2.png",
-                category: "Smartphone",
-                numOfBrands: 18,
-                press: () {},
-              ),
-              SpecialOfferCard(
-                image: "assets/images/Image Banner 3.png",
-                category: "Fashion",
-                numOfBrands: 24,
-                press: () {},
-              ),
-              SizedBox(width: getProportionateScreenWidth(20)),
-            ],
+            children: List.generate(specials.length,
+                  (index) =>
+                  SpecialOfferCard(
+                    image: specials[index]["image"],
+                    category: specials[index]["category"],
+                    numOfBrands: specials[index]["numOfBrands"],
+                    press: () {},
+                  ),
+            ),
           ),
         ),
       ],
@@ -61,7 +73,9 @@ class SpecialOfferCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: GestureDetector(
