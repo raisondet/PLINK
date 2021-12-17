@@ -12,7 +12,9 @@ const kPrimaryGradientColor = LinearGradient(
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
 const kToastBgColor = Color(0xFF737373);
+const kBackgroundColor = Color(0xFFF9F8FD);
 
+const double kDefaultPadding = 20.0;
 const kAnimationDuration = Duration(milliseconds: 200);
 
 final headingStyle = TextStyle(
