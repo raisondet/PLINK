@@ -21,20 +21,44 @@ class _SignFormState extends State<SignForm> {
   String? email;
   String? password;
   bool? remember = false;
-  final List<String?> errors = [];
+  List<String?> emailErrors = [];
+  List<String?> pwdErrors = [];
 
-  void addError({String? error}) {
-    if (!errors.contains(error))
+  void addEmailError({String? error}) {
+    if (!emailErrors.contains(error))
       setState(() {
-        errors.add(error);
+        emailErrors.add(error);
       });
   }
 
-  void removeError({String? error}) {
-    if (errors.contains(error))
+  void removeEmailError({String? error}) {
+    if (emailErrors.contains(error))
       setState(() {
-        errors.remove(error);
+        print(error);
+        emailErrors.remove(error);
+        print(emailErrors);
       });
+  }
+
+  void addPwdError({String? error}) {
+    if (!pwdErrors.contains(error))
+      setState(() {
+        pwdErrors.add(error);
+      });
+  }
+
+  void removePwdError({String? error}) {
+    if (pwdErrors.contains(error))
+      setState(() {
+        pwdErrors.remove(error);
+      });
+  }
+
+  void removeAllError(){
+    setState(() {
+      emailErrors = [];
+      pwdErrors = [];
+    });
   }
 
   void toast(String _msg){
@@ -55,8 +79,10 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           buildEmailFormField(),
+          FormError(errors: emailErrors),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
+          FormError(errors: pwdErrors),
           SizedBox(height: getProportionateScreenHeight(30)),
           Row(
             children: [
@@ -81,12 +107,12 @@ class _SignFormState extends State<SignForm> {
               )
             ],
           ),
-          FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
             press: () async {
               if (_formKey.currentState!.validate()) {
+                removeAllError();
                 _formKey.currentState!.save();
                 KeyboardUtil.hideKeyboard(context);
                 // if all are valid then go to success screen
@@ -120,18 +146,24 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          if (value.length < 8){
+            addPwdError(error: kShortPassError);
+          }
+          else{
+            removePwdError(error: kShortPassError);
+          }
+          removePwdError(error: kPassNullError);
         } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removePwdError(error: kShortPassError);
         }
         return null;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kPassNullError);
+          addPwdError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addPwdError(error: kShortPassError);
           return "";
         }
         return null;
@@ -153,18 +185,28 @@ class _SignFormState extends State<SignForm> {
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
+          print(value);
+          if (!emailValidatorRegExp.hasMatch(value)){
+            addEmailError(error: kInvalidEmailError);
+          }
+          else {
+            removeEmailError(error: kInvalidEmailError);
+          }
+          removeEmailError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          print("1111");
+          print(value);
+          removeEmailError(error: kInvalidEmailError);
         }
         return null;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kEmailNullError);
+          addEmailError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          print(value);
+          addEmailError(error: kInvalidEmailError);
           return "";
         }
         return null;

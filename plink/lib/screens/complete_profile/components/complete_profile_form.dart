@@ -64,6 +64,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildNickNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
+          buildPhoneNumberFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildDateOfBirthFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildGenderSelect(),
@@ -119,7 +121,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: BorderSide(color: Colors.white),
+                    side: BorderSide(color: Colors.white, width:3),
                   ),
                   primary: Colors.white,
                   backgroundColor: kPrimaryColor,
@@ -137,7 +139,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   Widget buildGenderSelect() {
     String value = 'flutter';
     return SmartSelect<String>.single(
-      title: 'Gender',
+      title: 'Gender (optional)',
       value: value,
       choiceItems: choices.genders,
       modalType: S2ModalType.bottomSheet,
@@ -158,7 +160,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     List<String> _interests = [];
     String value = 'flutter';
     return SmartSelect<String>.multiple(
-      title: 'Interests',
+      title: 'Interests (optional)',
       onChange: (selected) {
         setState(() => _interests = selected.value);
       },
@@ -187,7 +189,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   Widget buildAboutMe() {
     List<String> _features = [];
     return SmartSelect<String>.multiple(
-      title: 'About Me',
+      title: 'About Me (optional)',
       onChange: (selected) {
         setState(() => _features = selected.value);
       },
@@ -231,6 +233,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
       ],
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kDateBirthNullError);
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kDateBirthNullError);
+          return "";
+        }
+        return null;
+      },
       decoration: InputDecoration(
         labelText: "Date of Birth",
         hintText: "2000.12.25",
