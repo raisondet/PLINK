@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:plink/screens/chatting/chat_screen.dart';
 import 'package:plink/screens/home/home_screen.dart';
 import 'package:plink/screens/profile/profile_screen.dart';
 
-import '../constants.dart';
-import '../enums.dart';
+import 'package:plink/constants.dart';
+import 'package:plink/enums.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -45,16 +46,31 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, HomeScreen.routeName),
+                onPressed: () {
+                  if (MenuState.home != selectedMenu)
+                    Navigator.pushNamed(context, HomeScreen.routeName);
+                },
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
+                icon: SvgPicture.asset(
+                  "assets/icons/Heart Icon.svg",
+                  color: MenuState.favourite == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
                 onPressed: () {},
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
-                onPressed: () {},
+                icon: SvgPicture.asset(
+                  "assets/icons/Chat bubble Icon.svg",
+                  color: MenuState.message == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () {
+                  if (MenuState.message != selectedMenu)
+                    Navigator.pushNamed(context, ChatScreen.routeName);
+                },
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -63,8 +79,10 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
+                onPressed: () {
+                  if (MenuState.profile != selectedMenu)
+                    Navigator.pushNamed(context, ProfileScreen.routeName);
+                },
               ),
             ],
           )),
