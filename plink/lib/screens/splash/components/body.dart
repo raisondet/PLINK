@@ -6,6 +6,7 @@ import 'package:plink/screens/sign_in/sign_in_screen.dart';
 import 'package:plink/screens/complete_profile/complete_profile_screen.dart';
 import 'package:plink/size_config.dart';
 import 'splash_content.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -70,7 +71,7 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(flex:2),
                     DefaultButton(
-                      text: "Continue",
+                      text: "start".tr(),
                       press: () {
                         //Navigator.pushNamed(context, SignInScreen.routeName);
                         //Navigator.pushNamed(context, CompleteProfileScreen.routeName);
