@@ -9,14 +9,14 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
       {"icon": "assets/icons/Flash Icon.svg", "text": "골프"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Bike"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Running"},
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Lunch"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Tennis"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Fitness"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
-      {"icon": "assets/icons/Discover.svg", "text": "More"},
+      {"icon": "assets/icons/Bill Icon.svg", "text": "테니스"},
+      {"icon": "assets/icons/Game Icon.svg", "text": "피트니스"},
+      {"icon": "assets/icons/Gift Icon.svg", "text": "자전거"},
+      {"icon": "assets/icons/Flash Icon.svg", "text": "맛집투어"},
+      {"icon": "assets/icons/Bill Icon.svg", "text": "수다떨기"},
+      {"icon": "assets/icons/Game Icon.svg", "text": "치맥하기"},
+      {"icon": "assets/icons/Gift Icon.svg", "text": "노래방"},
+      {"icon": "assets/icons/Discover.svg", "text": "스터디"},
     ];
     return Column(
       children: [
@@ -66,15 +66,15 @@ class CategoryCard extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(15)),
               margin: EdgeInsets.all(getProportionateScreenWidth(5)),
-              height: getProportionateScreenWidth(55),
-              width: getProportionateScreenWidth(55),
+              height: getProportionateScreenWidth(50),
+              width: getProportionateScreenWidth(50),
               decoration: BoxDecoration(
                 color: kPrimaryColor,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: SvgPicture.asset(icon!, color: Colors.white,),
             ),
-            //SizedBox(height: 5),
+            SizedBox(height: 5),
             Text(text!, textAlign: TextAlign.center),
           ],
         ),

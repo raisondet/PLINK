@@ -1,63 +1,63 @@
 import 'package:smart_select/smart_select.dart' show S2Choice;
 
 List<S2Choice<String>> genders = [
-  S2Choice<String>(value: 'm', title: 'male'),
-  S2Choice<String>(value: 'f', title: 'female'),
-  S2Choice<String>(value: 'o', title: 'others'),
+  S2Choice<String>(value: 'm', title: "남성"), // 'male'
+  S2Choice<String>(value: 'f', title: "여성"), // 'female'
+  S2Choice<String>(value: 'o', title: "그 외"), // 'others'
 ];
 
 List<Map<String, dynamic>> interests = [
   {
-    'id': 'sk3',
-    'name': 'Samsung Keystone 3',
+    'id': 'gold',
+    'name': '골프',
     'brand': 'Samsung',
-    'category': 'Budget Phone'
+    'category': 'sports'
   },
   {
-    'id': 'n106',
-    'name': 'Nokia 106',
+    'id': 'tennis',
+    'name': '테니스',
     'brand': 'Nokia',
     'category': 'Budget Phone'
   },
   {
-    'id': 'n150',
-    'name': 'Nokia 150',
+    'id': 'fitness',
+    'name': '피트니스',
     'brand': 'Nokia',
     'category': 'Budget Phone'
   },
   {
-    'id': 'r7a',
-    'name': 'Redmi 7A',
+    'id': 'bike',
+    'name': '자전거',
     'brand': 'Xiaomi',
     'category': 'Mid End Phone'
   },
   {
-    'id': 'ga10s',
-    'name': 'Galaxy A10s',
+    'id': 'eat',
+    'name': '맛집투어',
     'brand': 'Samsung',
     'category': 'Mid End Phone'
   },
   {
-    'id': 'rn7',
-    'name': 'Redmi Note 7',
+    'id': 'talk',
+    'name': '수다떨기',
     'brand': 'Xiaomi',
     'category': 'Mid End Phone'
   },
   {
-    'id': 'ga20s',
-    'name': 'Galaxy A20s',
+    'id': 'chiken',
+    'name': '치맥하기',
     'brand': 'Samsung',
     'category': 'Mid End Phone'
   },
   {
-    'id': 'mc9',
-    'name': 'Meizu C9',
+    'id': 'sing',
+    'name': '노래방',
     'brand': 'Meizu',
     'category': 'Mid End Phone'
   },
   {
-    'id': 'm6',
-    'name': 'Meizu M6',
+    'id': 'study',
+    'name': '스터디',
     'brand': 'Meizu',
     'category': 'Mid End Phone'
   },
@@ -66,55 +66,55 @@ List<Map<String, dynamic>> interests = [
 List<Map<String, dynamic>> features = [
   {
     'id': 'sk3',
-    'name': '#Samsung Keystone 3',
+    'name': '#유혹에약한편',
     'brand': 'Samsung',
     'category': 'Budget Phone'
   },
   {
     'id': 'n106',
-    'name': '#Nokia 106',
+    'name': '#걱정쟁이',
     'brand': 'Nokia',
     'category': 'Budget Phone'
   },
   {
     'id': 'n150',
-    'name': '#Nokia 150',
+    'name': '#섬세한편',
     'brand': 'Nokia',
     'category': 'Budget Phone'
   },
   {
     'id': 'r7a',
-    'name': '#Redmi 7A',
+    'name': '#협조성이높음',
     'brand': 'Xiaomi',
     'category': 'Mid End Phone'
   },
   {
     'id': 'ga10s',
-    'name': '#Galaxy A10s',
+    'name': '#합리적인편',
     'brand': 'Samsung',
     'category': 'Mid End Phone'
   },
   {
     'id': 'rn7',
-    'name': '#Redmi Note 7',
+    'name': '#행동이굼뜸',
     'brand': 'Xiaomi',
     'category': 'Mid End Phone'
   },
   {
     'id': 'ga20s',
-    'name': '#Galaxy A20s',
+    'name': '#보수적인편',
     'brand': 'Samsung',
     'category': 'Mid End Phone'
   },
   {
     'id': 'mc9',
-    'name': '#Meizu C9',
+    'name': '#외로움을잘타는편',
     'brand': 'Meizu',
     'category': 'Mid End Phone'
   },
   {
     'id': 'm6',
-    'name': '#Meizu M6',
+    'name': '#생각이깊음',
     'brand': 'Meizu',
     'category': 'Mid End Phone'
   },
