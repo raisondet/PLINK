@@ -1,4 +1,11 @@
 {
+  "app_title": "Play + Link",
+  "splash1_title": "You can easily make variable activities with simple ui.",
+  "splash1_desc": "Welcome to PLINK, Let’s play!",
+  "splash2_title": "Any Where, Any Time, You can play it with neighbor",
+  "splash2_desc": "You can make activies. \nPlay with your buddy!",
+  "splash3_title": "You can get the plk coin after finishing the actitivies",
+  "splash3_desc": "Don't worry your log. \nThe activity is safe.",
   "login": "LogIn",
   "start": "Start",
   "golf": "Golf"

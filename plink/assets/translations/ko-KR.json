@@ -1,4 +1,11 @@
 {
+  "app_title": "Play + Link",
+  "splash1_title": "1.Create Activities",
+  "splash1_desc": "다양한 활동을 할 수 있는 시간!",
+  "splash2_title": "2.Enjoy Activiites",
+  "splash2_desc": "간단하게 활동을 만들고, \n함께 즐기세요!",
+  "splash3_title": "3.Earn Money",
+  "splash3_desc": "재밌게 활동하고! \n코인도 받고!",
   "login": "로그인",
   "start": "시작하기",
   "golf": "골프"

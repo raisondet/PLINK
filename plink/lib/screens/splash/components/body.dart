@@ -19,16 +19,15 @@ class _BodyState extends State<Body> {
   // TODO: make copyright
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to PLINK, Let’s play!",
+      "text": 'splash1_desc'.tr(),
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-      "You can make activies. \nPlay with your buddy!",
+      "text": 'splash2_desc'.tr(),
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "Don't worry your log. \nThe activity is safe.",
+      "text": 'splash3_desc'.tr(),
       "image": "assets/images/splash_3.png"
     },
   ];
@@ -73,9 +72,9 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "start".tr(),
                       press: () {
-                        //Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.pushNamed(context, SignInScreen.routeName);
                         //Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                        Navigator.pushNamed(context, HomeScreen.routeName);
+                        //Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
                     Spacer(),

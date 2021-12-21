@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plink/size_config.dart';
 
-const gAppName = "PLINK";
 const kPrimaryColor = Color(0xFF19C1CB);
 const kPrimaryLightColor = Color(0xFFD1F3F5);
 const kPrimaryGradientColor = LinearGradient(
