@@ -143,7 +143,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       value: value,
       choiceItems: choices.genders,
       modalType: S2ModalType.bottomSheet,
-      onChange: (state) => setState(() => value = state.value),
+      onChange: (state) {
+        FocusScope.of(context).requestFocus(FocusNode());
+        setState(() => value = state.value);
+      },
       tileBuilder: (context, state) => S2Tile.fromState(
         state,
         isTwoLine: true,
@@ -162,6 +165,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     return SmartSelect<String>.multiple(
       title: '관심사 (optional)',//'Interests (optional)',
       onChange: (selected) {
+        FocusScope.of(context).requestFocus(FocusNode());
         setState(() => _interests = selected.value);
       },
       choiceType: S2ChoiceType.chips,
@@ -191,6 +195,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     return SmartSelect<String>.multiple(
       title: '나를 표현하는 태그 (optional)',//'About Me (optional)',
       onChange: (selected) {
+        FocusScope.of(context).requestFocus(FocusNode());
         setState(() => _features = selected.value);
       },
       choiceType: S2ChoiceType.chips,

@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
                 Image.asset('assets/images/splash_1.png'),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 SignForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

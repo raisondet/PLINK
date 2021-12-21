@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
                 "OTP 인증", //"OTP Verification",
                 style: headingStyle,
               ),
-              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              SizedBox(height: SizeConfig.screenHeight * 0.02),
               //Text("We sent your code to +1 898 860 ***"),
               Text("고객님의 전화번호 +82 010 9013 1***로"),
               Text("인증번호를 전송하였습니다."),

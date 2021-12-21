@@ -3,6 +3,7 @@ import 'package:plink/components/custom_surfix_icon.dart';
 import 'package:plink/components/form_error.dart';
 import 'package:plink/components/default_button.dart';
 import 'package:plink/constants.dart';
+import 'package:plink/screens/home/home_screen.dart';
 import 'package:plink/size_config.dart';
 import 'package:plink/helper/keyboard.dart';
 import 'package:plink/screens/forgot_password/forgot_password_screen.dart';
@@ -80,10 +81,10 @@ class _SignFormState extends State<SignForm> {
         children: [
           buildEmailFormField(),
           FormError(errors: emailErrors),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: SizeConfig.screenHeight * 0.04),
           buildPasswordFormField(),
           FormError(errors: pwdErrors),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: SizeConfig.screenHeight * 0.04),
           Row(
             children: [
               Checkbox(
@@ -101,13 +102,14 @@ class _SignFormState extends State<SignForm> {
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: Text(
-                  "비밀번호 찾기",//""Forgot Password",
+                  "비밀번호찾기",//""Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )
             ],
           ),
-          SizedBox(height: getProportionateScreenHeight(20)),
+          //SizedBox(height: getProportionateScreenHeight(50)),
+          SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
             text: "로그인",//"Continue",
             press: () async {
@@ -121,14 +123,15 @@ class _SignFormState extends State<SignForm> {
                       email: email, password: password);
                   if (user != null){
                     print('Login Success!!');
-                    Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                    //Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                    Navigator.pushNamed(context, HomeScreen.routeName);
                   }
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
-                    print('No user found for that email.');
+                    print('이메일 정보가 잘못 입력 되었습니다.');
                     toast(kUserNotFound);
                   } else if (e.code == 'wrong-password') {
-                    print('Wrong password provided for that user.');
+                    print('비밀번호가 잘못 입력 되었습니다.');
                     toast(kWrongPassword);
                   }
                 }
@@ -196,6 +199,7 @@ class _SignFormState extends State<SignForm> {
         } else if (emailValidatorRegExp.hasMatch(value)) {
           print(value);
           removeEmailError(error: kInvalidEmailError);
+          removeEmailError(error: kEmailNullError);
         }
         return null;
       },
@@ -204,7 +208,6 @@ class _SignFormState extends State<SignForm> {
           addEmailError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          print(value);
           addEmailError(error: kInvalidEmailError);
           return "";
         }
