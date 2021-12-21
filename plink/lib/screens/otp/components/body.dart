@@ -17,10 +17,13 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.screenHeight * 0.05),
               Text(
-                "OTP Verification",
+                "OTP 인증", //"OTP Verification",
                 style: headingStyle,
               ),
-              Text("We sent your code to +1 898 860 ***"),
+              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              //Text("We sent your code to +1 898 860 ***"),
+              Text("고객님의 전화번호 +82 010 9013 1***로"),
+              Text("인증번호를 전송하였습니다."),
               buildTimer(),
               OtpForm(),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
@@ -44,7 +47,7 @@ class Body extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("This code will expired in "),
+        Text("인증만료 시간 : "), //"This code will expired in "
         TweenAnimationBuilder(
           tween: Tween(begin: 60.0, end: 0.0),
           duration: Duration(seconds: 60),

@@ -11,7 +11,7 @@ class CompleteProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Sign Up',
+          "회원 가입", //"'Sign Up',
           style: TextStyle(
             color: kTextColor,
             fontSize: 15,

@@ -76,7 +76,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "continue",
+            text: "계속", //"continue",
             press: () {
               if (_formKey.currentState!.validate()) {
                 Navigator.pushNamed(context, OtpScreen.routeName);
@@ -139,7 +139,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   Widget buildGenderSelect() {
     String value = 'flutter';
     return SmartSelect<String>.single(
-      title: 'Gender (optional)',
+      title: '성별 (optional)', //'Gender (optional)',
       value: value,
       choiceItems: choices.genders,
       modalType: S2ModalType.bottomSheet,
@@ -160,7 +160,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     List<String> _interests = [];
     String value = 'flutter';
     return SmartSelect<String>.multiple(
-      title: 'Interests (optional)',
+      title: '관심사 (optional)',//'Interests (optional)',
       onChange: (selected) {
         setState(() => _interests = selected.value);
       },
@@ -189,7 +189,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   Widget buildAboutMe() {
     List<String> _features = [];
     return SmartSelect<String>.multiple(
-      title: 'About Me (optional)',
+      title: '나를 표현하는 태그 (optional)',//'About Me (optional)',
       onChange: (selected) {
         setState(() => _features = selected.value);
       },
@@ -247,7 +247,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Date of Birth",
+        labelText: "생년월일", //""Date of Birth",
         hintText: "2000.12.25",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
@@ -274,8 +274,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Nickname",
-        hintText: "Enter your nickname",
+        labelText: "ID",//Nickname",
+        hintText: "아이디 입력",//"Enter your nickname",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -331,7 +331,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       },
       decoration: InputDecoration(
         labelText: "Phone Number",
-        hintText: "Enter your phone number",
+        hintText: "전화번호 입력",//"Enter your phone number",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

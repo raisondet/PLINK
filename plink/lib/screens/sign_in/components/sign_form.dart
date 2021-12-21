@@ -95,13 +95,13 @@ class _SignFormState extends State<SignForm> {
                   });
                 },
               ),
-              Text("Remember me"),
+              Text("로그인 상태 유지"), //"Remember me"
               Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: Text(
-                  "Forgot Password",
+                  "비밀번호 찾기",//""Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               )
@@ -109,7 +109,7 @@ class _SignFormState extends State<SignForm> {
           ),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: "Continue",
+            text: "로그인",//"Continue",
             press: () async {
               if (_formKey.currentState!.validate()) {
                 removeAllError();
@@ -170,7 +170,7 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "Password",
-        hintText: "Enter your password",
+        hintText: "비밀번호 (최소 8자)", //""Enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -194,7 +194,6 @@ class _SignFormState extends State<SignForm> {
           }
           removeEmailError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          print("1111");
           print(value);
           removeEmailError(error: kInvalidEmailError);
         }
@@ -213,7 +212,7 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: InputDecoration(
         labelText: "Email",
-        hintText: "Enter your email",
+        hintText: "이메일 입력", //""Enter your email",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

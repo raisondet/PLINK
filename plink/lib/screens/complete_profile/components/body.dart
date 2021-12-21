@@ -12,14 +12,15 @@ class Body extends StatelessWidget {
         width: double.infinity,
         child: Padding(
           padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.03),
-                Text("Complete Profile", style: headingStyle),
+                Text("프로필", style: headingStyle), // "Complete Profile"
                 Text(
-                  "Complete your details or continue  \nwith social media",
+                  "더 나은 서비스를 위해 \n사용자 정보를 작성해 주세요.",
+                  //"Complete your details or continue  \nwith social media",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.06),

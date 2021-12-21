@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plink/components/default_button.dart';
+import 'package:plink/screens/home/home_screen.dart';
 import 'package:plink/size_config.dart';
 import 'package:plink/constants.dart';
 
@@ -107,8 +108,10 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
-            text: "Continue",
-            press: () {},
+            text: "인증 확인", //""Continue",
+            press: () {
+              Navigator.pushNamed(context, HomeScreen.routeName);
+            },
           )
         ],
       ),

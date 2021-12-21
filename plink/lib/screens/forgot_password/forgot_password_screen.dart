@@ -9,7 +9,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Forgot Password",
+          "비밀번호 찾기", //"Forgot Password",
           style: TextStyle(
             color: kTextColor,
             fontSize: 15,

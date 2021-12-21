@@ -20,15 +20,17 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.screenHeight * 0.04),
               Text(
-                "Forgot Password",
+                "비밀번호 찾기", //"Forgot Password",
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(28),
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(height: SizeConfig.screenHeight * 0.01),
               Text(
-                "Please enter your email and we will send \nyou a link to return to your account",
+                //"Please enter your email and we will send \nyou a link to return to your account",
+                "입력하신 이메일로 계정 설정을 위한 링크를 보내드립니다.",
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
@@ -87,7 +89,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
             },
             decoration: InputDecoration(
               labelText: "Email",
-              hintText: "Enter your email",
+              hintText: "이메일 입력", //"Enter your email",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -98,7 +100,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
-            text: "Continue",
+            text: "확인", //"Continue",
             press: () {
               if (_formKey.currentState!.validate()) {
                 // Do what you want to do
