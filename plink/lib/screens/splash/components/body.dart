@@ -6,7 +6,7 @@ import 'package:plink/screens/sign_in/sign_in_screen.dart';
 import 'package:plink/screens/complete_profile/complete_profile_screen.dart';
 import 'package:plink/size_config.dart';
 import 'splash_content.dart';
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -19,15 +19,15 @@ class _BodyState extends State<Body> {
   // TODO: make copyright
   List<Map<String, String>> splashData = [
     {
-      "text": 'splash1_desc'.tr(),
+      "text": "다양한 액티비티를 만 수 있는 시간!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text": 'splash2_desc'.tr(),
+      "text": "간단하게 액티비티를 만들고, \n새로운 사람들과 함께 즐기세요!",
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": 'splash3_desc'.tr(),
+      "text": "액티비티도 즐기고! \n코인도 받고!",
       "image": "assets/images/splash_3.png"
     },
   ];
@@ -70,7 +70,7 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(flex:2),
                     DefaultButton(
-                      text: "start".tr(),
+                      text: "시작하기",
                       press: () {
                         Navigator.pushNamed(context, SignInScreen.routeName);
                         //Navigator.pushNamed(context, CompleteProfileScreen.routeName);

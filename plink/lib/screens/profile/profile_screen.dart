@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plink/components/coustom_bottom_nav_bar.dart';
 import 'package:plink/constants.dart';
 import 'package:plink/enums.dart';
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 import 'components/body.dart';
 
 class ProfileScreen extends StatelessWidget {

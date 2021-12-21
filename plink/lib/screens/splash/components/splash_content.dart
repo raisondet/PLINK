@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:plink/constants.dart';
 import 'package:plink/size_config.dart';
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
@@ -18,7 +18,7 @@ class SplashContent extends StatelessWidget {
       children: <Widget>[
         Spacer(),
         Text(
-          "app_title".tr(),
+          "Play + Link",
           style: TextStyle(
             fontSize: getProportionateScreenWidth(25),
             color: kPrimaryColor,

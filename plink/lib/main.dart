@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:plink/routes.dart';
 import 'package:plink/screens/sign_in/sign_in_screen.dart';
@@ -12,11 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ko', 'KR')],
-      path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
-      child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,15 +23,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      supportedLocales: EasyLocalization.of(context).supportedLocales,
-      locale: EasyLocalization.of(context).locale,
-      localizationsDelegates: [
-        EasyLocalization.of(context).delegate,
-      ],
       theme: theme(),
-      // home: SplashScreen(),
+      //home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: SignInScreen.routeName, // SplashScreen.routeName,
+      initialRoute:  SplashScreen.routeName, //SignInScreen.routeName,
       routes: routes,
     );
   }
